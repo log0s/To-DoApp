@@ -5,8 +5,9 @@
     
 <head>
     <title>To Do</title>
+    <link rel='stylesheet' type='text/css' href='bootstrap.css' />
+    <link rel='stylesheet' type='text/css' href='bootstrap-theme.css' />
     <link rel="stylesheet" type="text/css" href="mytodo.css" />
-    <script src="jquery-1.10.2.min.js"></script>
 </head>
 
 <body>
@@ -16,9 +17,7 @@
     <!-- Main to-do list wrapper div -->
     <div id="main">
         <!-- Entry area for items -->
-        <div id="entry">
-            <input id="itemEntry" placeholder="What needs to be done?" />
-        </div>
+        <input id="itemEntry" placeholder="What needs to be done?" />
         
         <!-- Div to contain items -->
         <div id="items"></div>
@@ -27,6 +26,8 @@
         <div id="statusBar"></div>
     </div>
 
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src='bootstrap.js'></script>
     <script src="mytodo.js"></script>
 </body>
     
