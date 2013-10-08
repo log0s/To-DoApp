@@ -10,7 +10,7 @@ h1 {
 }
 
 #main {
-    margin: 0 40% 0 40%;
+    margin: 0 35% 0 35%;
     border-top: 20px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
@@ -23,6 +23,18 @@ h1 {
 
 #itemEntry:focus {
     color: black;
+}
+
+#statusBar {
+    height: 20px;
+}
+
+#remaining {
+    float: left;
+}
+
+#selector {
+    float: right;
 }
 
 .remove {
