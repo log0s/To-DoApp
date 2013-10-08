@@ -25,6 +25,10 @@ h1 {
     color: black;
 }
 
+.remove {
+    float: right;
+}
+
 /* Overriding default Bootstrap styling */
 .form-control {
     border-radius: 0;
