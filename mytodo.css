@@ -20,6 +20,7 @@ h1 {
 #itemEntry {
     font-size: 24px;
     padding-left: 5px;
+    height: 70px;
 }
 
 #itemEntry:focus {
@@ -43,7 +44,7 @@ h1 {
 }
 
 .todo {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 
