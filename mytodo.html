@@ -17,10 +17,13 @@
     <!-- Main to-do list wrapper div -->
     <div id="main">
         <!-- Entry area for items -->
-        <input id="itemEntry" placeholder="What needs to be done?" />
+        <input class='form-control' id="itemEntry" placeholder="What needs to be done?" />
         
-        <!-- Div to contain items -->
-        <div id="items"></div>
+        <!-- ul to contain items -->
+        <ul id="items" class='list-group'>
+            <!-- Temporary test item -->
+            <li class='list-group-item'>Stuff<span class='badge'><span class='glyphicon glyphicon-remove'></span></span></li>
+        </ul>
         
         <!-- Bar to display remaining number of items -->
         <div id="statusBar"></div>

@@ -14,4 +14,28 @@ h1 {
     border-top: 20px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#itemEntry {
+    font-size: 24px;
+}
+
+#itemEntry:focus {
+    color: black;
+}
+
+/* Overriding default Bootstrap styling */
+.form-control {
+    border-radius: 0;
+}
+
+.list-group {
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    /* Using !important to avoid redundancy with every pseudo-selector*/
+    border-radius: 0 !important;
+    padding: 5px;
 }
