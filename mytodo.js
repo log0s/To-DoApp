@@ -13,23 +13,26 @@ var app = {
         $items.on('click', '.remove', app.removeItem);
         },
         
-    getItem: function() {
-        var text = $itemEntry.val();
-        
+    getInput: function() {
+        return $itemEntry.val();
+    },
+    
+    clearInput: function() {
         $itemEntry.val('');
-        
-        return text;
     },
         
     addItem: function(ev) {
-        if (ev.which === 13) {
+        var text = app.getInput();
+        
+        if ((ev.which === 13) && (text !== '')) {
             $toDoItem
                 .clone()
-                .html(app.getItem() + '<span class="remove glyphicon glyphicon-remove"></span>')
+                .html(text + '<span class="remove glyphicon glyphicon-remove"></span>')
                 .appendTo($items);
+            
+            app.clearInput();
+            app.updateCount();
         }
-        
-        app.updateCount();
     },
         
     removeItem: function(ev) {
@@ -47,7 +50,7 @@ var app = {
         if (length === 1) {
             count = '1 item left';
         }
-        else if (length > 1) {
+        else {
             count = length.toString() + ' items left';
         }
         
