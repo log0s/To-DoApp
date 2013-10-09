@@ -47,8 +47,14 @@ var app = {
         var length = $items.find('li').length,
             count = '';
         
-        if (length === 1) {
+        if (length === 0) {
+            $statusBar.toggle();
+        }
+        else if (length === 1) {
             count = '1 item left';
+            if ($statusBar.css('display') === 'none') {
+                $statusBar.toggle();
+            }
         }
         else {
             count = length.toString() + ' items left';
