@@ -4,7 +4,7 @@ var $itemEntry = $('#itemEntry'),
     $statusBar = $('#statusBar'),
     $remaining = $('#remaining'),
     $selectors = $('#selector li'),
-    $toDoItem = $('<li class="todo list-group-item"><span class="toDoText"></span><span class="remove glyphicon glyphicon-remove"></span></li>');
+    $toDoItem = $('<li class="todo list-group-item"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove glyphicon glyphicon-remove"></span></li>');
 
 //Object to contain all app functions
 var app = {
@@ -52,12 +52,13 @@ var app = {
         app.updateCount();
     },
     
-    //Marks an item as completed when it is clicked
+    //Marks an item as completed/not completed when it is clicked
     toggleItem: function(ev) {
         var $target = $(ev.target);
         $target
+            .toggleClass('completed')
             .closest('li')
-            .toggleClass('completed');
+                .toggleClass('completed');
         
         app.updateCount();
         app.updateVisibility($target);
@@ -67,7 +68,7 @@ var app = {
     updateCount: function() {
         var count,
             length = $items.find('li').length;
-            notCompleted = length - $items.find('.completed').length;
+            notCompleted = length - $items.find('li.completed').length;
         
         //No items in the list
         if (length === 0) {
@@ -88,7 +89,7 @@ var app = {
         $remaining.text(count);
     },
     
-    //Dynamically updates item visibility based on currently display settings
+    //Dynamically updates item visibility based on current display settings
     updateVisibility: function($target) {
         var $targetLI = $target.closest('li'),
             completed = $targetLI.hasClass('completed'),

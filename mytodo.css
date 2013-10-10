@@ -74,6 +74,10 @@ h1 {
     color: #000000;
 }
 
+.toDoInput {
+    display: none;
+}
+
 /* Overriding default Bootstrap styling */
 .form-control {
     border-radius: 0;
