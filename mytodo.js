@@ -12,7 +12,8 @@ var app = {
         $itemEntry.keydown(app.addItem);
         $items
             .on('click', '.remove', app.removeItem)
-            .on('click', '.toDoText', app.toggleItem);
+            .on('click', '.toDoText', app.toggleItem)
+            .on('dblclick', 'toDoText', app.editItem);
         $selectors.click(app.selectItems);
         },
         
@@ -53,14 +54,16 @@ var app = {
     
     //Marks an item as completed when it is clicked
     toggleItem: function(ev) {
-        $(ev.target)
+        var $target = $(ev.target);
+        $target
             .closest('li')
             .toggleClass('completed');
         
         app.updateCount();
+        app.updateVisibility($target);
     },
     
-    //Helper function that updates the number of non-completed items
+    //Updates the number of non-completed items and toggles visibility of the status bar
     updateCount: function() {
         var count,
             length = $items.find('li').length;
@@ -83,6 +86,22 @@ var app = {
         }
         
         $remaining.text(count);
+    },
+    
+    //Dynamically updates item visibility based on currently display settings
+    updateVisibility: function($target) {
+        var $targetLI = $target.closest('li'),
+            check = $targetLI.hasClass('completed'),
+            selected = $selectors.filter('.selected').text();
+        
+        //Class is completed and only non-completed items are being shown
+        if(check && (selected === 'Active')) {
+            $targetLI.hide();
+        }
+        //Class is not completed and only completed items are being shown
+        else if (!check && (selected === 'Completed')) {
+            $targetLI.hide();
+        }
     },
     
     //Toggles between all, non-completed, and completed items via click selection
