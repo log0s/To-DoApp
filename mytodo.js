@@ -3,7 +3,7 @@ var $itemEntry = $('#itemEntry'),
     $items = $('#items'),
     $statusBar = $('#statusBar'),
     $remaining = $('#remaining'),
-    $selector = $('#selector'),
+    $selectors = $('#selector li'),
     $toDoItem = $('<li class="todo list-group-item"><span class="toDoText"></span><span class="remove glyphicon glyphicon-remove"></span></li>');
 
 //Object to contain all app functions
@@ -12,8 +12,8 @@ var app = {
         $itemEntry.keydown(app.addItem);
         $items
             .on('click', '.remove', app.removeItem)
-            .on('click', '.toDoText', app.completeItem);
-        
+            .on('click', '.toDoText', app.toggleItem);
+        $selectors.click(app.selectItems);
         },
         
     getInput: function() {
@@ -48,15 +48,10 @@ var app = {
         app.updateCount();
     },
     
-    completeItem: function(ev) {
-        var $target = $(ev.target);
-        
-        if($target.hasClass('completed')) {
-            $target.removeClass('completed');
-        }
-        else {
-            $target.addClass('completed');
-        }
+    toggleItem: function(ev) {
+        $(ev.target)
+            .closest('li')
+            .toggleClass('completed');
         
         app.updateCount();
     },
@@ -69,7 +64,7 @@ var app = {
         if (length === 0) {
             $statusBar.toggle();
         }
-        else if ((length === 1) && (notCompleted === 1)) {
+        else if (notCompleted === 1) {
             count = '1 item left';
             if ($statusBar.css('display') === 'none') {
                 $statusBar.toggle();
@@ -80,6 +75,35 @@ var app = {
         }
         
         $remaining.text(count);
+    },
+    
+    selectItems: function(ev) {
+        var $todos = $items.find('li'),
+            $target = $(ev.target);
+        
+        $todos.hide();
+        $selectors.removeClass('selected');
+        
+        switch($target.text()) {
+                case 'All':
+                    $todos.show();
+                    $target.addClass('selected');
+                    break;
+                
+                case 'Active':
+                    $todos
+                        .not('.completed')
+                        .show();
+                    $target.addClass('selected');
+                    break;
+                
+                case 'Completed':
+                    $todos
+                        .filter('.completed')
+                        .show();
+                    $target.addClass('selected');
+                    break;
+        }
     }
 };
 

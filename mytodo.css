@@ -55,10 +55,6 @@ h1 {
     margin-right: none;
 }
 
-.remove {
-    float: right;
-}
-
 .todo {
     font-size: 24px;
 }
@@ -71,6 +67,11 @@ h1 {
 .completed {
     text-decoration: line-through;
     color: #555555;
+}
+
+.remove {
+    float: right;
+    color: #000000;
 }
 
 /* Overriding default Bootstrap styling */
