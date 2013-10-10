@@ -68,6 +68,11 @@ h1 {
     font-weight: bold;
 }
 
+.completed {
+    text-decoration: line-through;
+    color: #555555;
+}
+
 /* Overriding default Bootstrap styling */
 .form-control {
     border-radius: 0;
