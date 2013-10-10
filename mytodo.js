@@ -23,10 +23,12 @@ var app = {
     clearInput: function() {
         $itemEntry.val('');
     },
-        
+    
+    //Retrieves input from entry field on pressing enter and adds a styled li element    
     addItem: function(ev) {
         var text = app.getInput();
         
+        //Checks that the key pressed was enter and the entry field is not blank
         if ((ev.which === 13) && (text !== '')) {
             $toDoItem
                 .clone()
@@ -39,7 +41,8 @@ var app = {
             app.updateCount();
         }
     },
-        
+    
+    //Removes an item upon clicking on the X glyphicon on its right
     removeItem: function(ev) {
         $(ev.target)
             .closest('li')
@@ -48,6 +51,7 @@ var app = {
         app.updateCount();
     },
     
+    //Marks an item as completed when it is clicked
     toggleItem: function(ev) {
         $(ev.target)
             .closest('li')
@@ -56,20 +60,24 @@ var app = {
         app.updateCount();
     },
     
+    //Helper function that updates the number of non-completed items
     updateCount: function() {
         var count,
             length = $items.find('li').length;
             notCompleted = length - $items.find('.completed').length;
         
+        //No items in the list
         if (length === 0) {
             $statusBar.toggle();
         }
+        //Exactly one non-completed item in the list
         else if (notCompleted === 1) {
             count = '1 item left';
             if ($statusBar.css('display') === 'none') {
                 $statusBar.toggle();
             }
         }
+        //All other cases
         else {
             count = notCompleted.toString() + ' items left';
         }
@@ -77,6 +85,7 @@ var app = {
         $remaining.text(count);
     },
     
+    //Toggles between all, non-completed, and completed items via click selection
     selectItems: function(ev) {
         var $todos = $items.find('li'),
             $target = $(ev.target);
