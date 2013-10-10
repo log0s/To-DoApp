@@ -4,7 +4,7 @@ var $itemEntry = $('#itemEntry'),
     $statusBar = $('#statusBar'),
     $remaining = $('#remaining'),
     $selector = $('#selector'),
-    $toDoItem = $('<li class="todo list-group-item"></li>');
+    $toDoItem = $('<li class="todo list-group-item"><span class="toDoText"></span><span class="remove glyphicon glyphicon-remove"></span></li>');
 
 //Object to contain all app functions
 var app = {
@@ -27,7 +27,9 @@ var app = {
         if ((ev.which === 13) && (text !== '')) {
             $toDoItem
                 .clone()
-                .html(text + '<span class="remove glyphicon glyphicon-remove"></span>')
+                .find('.toDoText')
+                    .text(text)
+                .end()
                 .appendTo($items);
             
             app.clearInput();
