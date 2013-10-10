@@ -91,15 +91,15 @@ var app = {
     //Dynamically updates item visibility based on currently display settings
     updateVisibility: function($target) {
         var $targetLI = $target.closest('li'),
-            check = $targetLI.hasClass('completed'),
+            completed = $targetLI.hasClass('completed'),
             selected = $selectors.filter('.selected').text();
         
         //Class is completed and only non-completed items are being shown
-        if(check && (selected === 'Active')) {
+        if(completed && (selected === 'Active')) {
             $targetLI.hide();
         }
         //Class is not completed and only completed items are being shown
-        else if (!check && (selected === 'Completed')) {
+        else if (!completed && (selected === 'Completed')) {
             $targetLI.hide();
         }
     },
