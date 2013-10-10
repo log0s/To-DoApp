@@ -46,8 +46,8 @@ var app = {
     },
     
     updateCount: function() {
-        var length = $items.find('li').length,
-            count = '';
+        var count,
+            length = $items.find('li').length;
         
         if (length === 0) {
             $statusBar.toggle();
