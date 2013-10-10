@@ -46,9 +46,12 @@ h1 {
     display: inline;
     list-style-type: none;
     margin-right: 2px;
+    border: 1px solid #00a3a3;
+    border-radius: 4px;
+    padding: 1px 2px 1px 2px;
 }
 
-#selector li: last-child {
+#selector li:last-child {
     margin-right: none;
 }
 
@@ -60,6 +63,10 @@ h1 {
     font-size: 24px;
 }
 
+.selected {
+    color: #990000;
+    font-weight: bold;
+}
 
 /* Overriding default Bootstrap styling */
 .form-control {
