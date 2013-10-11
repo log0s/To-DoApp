@@ -80,7 +80,7 @@ var app = {
     //Submits a completed edit on an item
     submitEdit: function(ev) {
         //Check that the key pressed is enter
-        if (ev.which === 13) {
+        if ((ev.which === 13) || (ev.type === 'blur')) {
             var $target = $(ev.target),
             text = $target.val();
             
