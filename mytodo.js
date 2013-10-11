@@ -79,10 +79,12 @@ var app = {
         
     //Submits a completed edit on an item
     submitEdit: function(ev) {
+        //Check that the key pressed is enter
         if (ev.which === 13) {
             var $target = $(ev.target),
             text = $target.val();
             
+            //Check whether there is any input
             if (text !== ''){
                 $target
                     .attr('value', text)
@@ -91,6 +93,7 @@ var app = {
                         .text(text)
                         .show();
             }
+            //If no input, remove the item
             else {
             app.removeItem(ev);
             }
