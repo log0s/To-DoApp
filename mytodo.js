@@ -74,7 +74,7 @@ var app = {
             .hide()
             .siblings('.toDoInput')
                 .show()
-                .keypress(app.submitEdit);
+                .on('keypress blur', app.submitEdit);
     },
         
     //Submits a completed edit on an item
