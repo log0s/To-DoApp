@@ -48,7 +48,7 @@ var app = {
     
     //Removes an item upon clicking on the X glyphicon on its right
     removeItem: function(ev) {
-        $(ev.target)
+        ($(ev.target) || ev)
             .closest('li')
             .remove();
         
@@ -79,10 +79,10 @@ var app = {
         
     //Submits a completed edit on an item
     submitEdit: function(ev) {
-        var $target = $(ev.target),
-            text = $target.val();
-    
         if (ev.which === 13) {
+            var $target = $(ev.target),
+            text = $target.val();
+            
             if (text !== ''){
                 $target
                     .attr('value', text)
