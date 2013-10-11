@@ -13,7 +13,7 @@ var app = {
         $items
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
-            .on('dblclick', 'toDoText', app.editItem);
+            .on('dblclick', '.todo', app.editItem);
         $selectors.click(app.selectItems);
         },
         
@@ -35,6 +35,9 @@ var app = {
                 .clone()
                 .find('.toDoText')
                     .text(text)
+                .end()
+                .find('.toDoInput')
+                    .attr('value', text)
                 .end()
                 .appendTo($items);
             
@@ -62,6 +65,36 @@ var app = {
         
         app.updateCount();
         app.updateVisibility($target);
+    },
+    
+    //Allows editing an item on double click
+    editItem: function(ev) {
+        $(ev.target)
+            .find('.toDoText')
+            .hide()
+            .siblings('.toDoInput')
+                .show()
+                .keypress(app.submitEdit);
+    },
+        
+    //Submits a completed edit on an item
+    submitEdit: function(ev) {
+        var $target = $(ev.target),
+            text = $target.val();
+    
+        if (ev.which === 13) {
+            if (text !== ''){
+                $target
+                    .attr('value', text)
+                    .hide()
+                    .siblings('.toDoText')
+                        .text(text)
+                        .show();
+            }
+            else {
+            app.removeItem($target);
+            }
+        }
     },
     
     //Updates the number of non-completed items and toggles visibility of the status bar

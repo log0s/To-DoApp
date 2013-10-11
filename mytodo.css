@@ -74,8 +74,21 @@ h1 {
     color: #000000;
 }
 
+.toDoText {
+    margin-bottom: 0;
+    height: 36px;
+}
+
 .toDoInput {
     display: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    border: none;
+}
+
+.toDoInput:focus {
+    outline: 0;
 }
 
 /* Overriding default Bootstrap styling */
