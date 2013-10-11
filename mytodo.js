@@ -48,7 +48,7 @@ var app = {
     
     //Removes an item upon clicking on the X glyphicon on its right
     removeItem: function(ev) {
-        ($(ev.target) || ev)
+        $(ev.target)
             .closest('li')
             .remove();
         
@@ -92,7 +92,7 @@ var app = {
                         .show();
             }
             else {
-            app.removeItem($target);
+            app.removeItem(ev);
             }
         }
     },
