@@ -149,7 +149,7 @@ var app = {
         $todos.hide();
         $selectors.removeClass('selected');
         
-        switch($target.text()) {
+        switch(ev.target.id) {
                 case 'All':
                     $todos.show();
                     $target.addClass('selected');
