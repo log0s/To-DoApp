@@ -10,9 +10,12 @@ h1 {
     cursor: default;
 }
 
-#main {
+#wrapper {
     margin: 0 35% 0 35%;
-    border-top: 20px solid black;
+}
+
+#main {
+    border-top: 25px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -58,6 +61,14 @@ h1 {
 
 #items li {
     cursor: -webkit-grab;
+}
+
+#help {
+    float: right;
+    color: #00a3a3;
+    margin: 3px 0px 3px 3px;
+    height: 20px;
+    width: 20px;
 }
 
 .todo {

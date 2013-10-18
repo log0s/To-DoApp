@@ -9,26 +9,27 @@
 </head>
 
 <body>
-
-    <h1>to-dos</h1>
-    
-    <div id="main">
-        <!-- Entry area for items -->
-        <input class='form-control' id="itemEntry" placeholder="What needs to be done?" />
+    <div id='wrapper'>   
+        <h1>to-dos</h1><span id='help' class='glyphicon glyphicon-question-sign'></span>
         
-        <!-- ul to contain items -->
-        <ul id="items" class='list-group'></ul>
+        <div id="main">
+            <!-- Entry area for items -->
+            <input class='form-control' id="itemEntry" placeholder="What needs to be done?" />
         
-        <!-- bar to display remaining number of items/toggle between item types -->
-        <div id="statusBar">
-            <!-- display number of remaining items -->
-            <span id='remaining'></span>
-            <!-- toggle selector area -->
-            <ul id='selector'>
-                <li class='selected' id='All'>All</li>
-                <li id='Active'>Active</li>
-                <li id='Completed'>Completed</li>
-            </ul>
+            <!-- ul to contain items -->
+            <ul id="items" class='list-group'></ul>
+        
+            <!-- bar to display remaining number of items/toggle between item types -->
+            <div id="statusBar">
+                <!-- display number of remaining items -->
+                <span id='remaining'></span>
+                <!-- toggle selector area -->
+                <ul id='selector'>
+                    <li class='selected' id='All'>All</li>
+                    <li id='Active'>Active</li>
+                    <li id='Completed'>Completed</li>
+                </ul>
+            </div>
         </div>
     </div>
 
