@@ -1,5 +1,6 @@
-//Create jQuery objects for commonly used DOM elements and default to-do element
-var $itemEntry = $('#itemEntry'),
+//Create jQuery objects for commonly used DOM elements and default to-do element as well as variable to detect whether items are currently being sorted
+var sorting = false,
+    $itemEntry = $('#itemEntry'),
     $items = $('#items'),
     $statusBar = $('#statusBar'),
     $remaining = $('#remaining'),
@@ -12,11 +13,13 @@ var app = {
     init: function() {        
         $itemEntry.keydown(app.addItem);
         $items
+            .sortable( {containment: 'parent', cursor: '-webkit-grabbing', opacity: '0.5'} )
+            .on('sortstart sortstop', app.checkSort)
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
             .on('dblclick', '.todo', app.editItem)
-            .on('mouseenter mouseleave', '.todo', app.toggleRemove)
-            .sortable( {containment: 'parent', cursor: '-webkit-grabbing'} );
+            .on('mouseenter mouseleave', '.todo', app.toggleRemove);
+                    
         $selectors.click(app.selectItems);
     },
     
@@ -168,9 +171,22 @@ var app = {
     
     //Toggles visibility of remove button when mousing over an item
     toggleRemove: function(ev) {
-        $(ev.target)
-            .find('.remove')
-            .toggle();
+        //Check to see if the list is currently being sorted
+        if (!sorting) {
+            $(ev.target)
+                .find('.remove')
+                .toggle();
+        }
+    },
+    
+    //Changes boolean value of a variable if the items are being sorted
+    checkSort: function(ev) {
+        if (ev.type === 'sortstart') {
+            sorting = true;
+        }
+        else {
+            sorting = false;
+        }
     }
 };
 
