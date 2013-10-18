@@ -15,7 +15,7 @@ var app = {
             .on('click', '.toDoText', app.toggleItem)
             .on('dblclick', '.todo', app.editItem);
         $selectors.click(app.selectItems);
-        },
+    },
         
     getInput: function() {
         return $itemEntry.val();
@@ -123,6 +123,7 @@ var app = {
         }
         
         $remaining.text(count);
+        $items.sortable();
     },
     
     //Dynamically updates item visibility based on current display settings
