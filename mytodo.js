@@ -116,7 +116,6 @@ var app = {
         }
         
         $remaining.text(count);
-        $items.sortable();
     },
     
     //Dynamically updates item visibility based on current display settings
