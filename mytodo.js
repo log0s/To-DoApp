@@ -16,18 +16,10 @@ var app = {
             .on('dblclick', '.todo', app.editItem);
         $selectors.click(app.selectItems);
     },
-        
-    getInput: function() {
-        return $itemEntry.val();
-    },
-    
-    clearInput: function() {
-        $itemEntry.val('');
-    },
     
     //Retrieves input from entry field on pressing enter and adds a styled li element    
     addItem: function(ev) {
-        var text = app.getInput();
+        var text = $itemEntry.val();
         
         //Checks that the key pressed was enter and the entry field is not blank
         if ((ev.which === 13) && (text !== '')) {
@@ -41,7 +33,7 @@ var app = {
                 .end()
                 .appendTo($items);
             
-            app.clearInput();
+            $itemEntry.val('');
             app.updateCount();
         }
     },
