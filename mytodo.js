@@ -14,7 +14,8 @@ var app = {
         $items
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
-            .on('dblclick', '.todo', app.editItem);
+            .on('dblclick', '.todo', app.editItem)
+            .on('mouseenter mouseleave', '.todo', app.toggleRemove);
         $selectors.click(app.selectItems);
     },
     
@@ -162,6 +163,13 @@ var app = {
                     $target.addClass('selected');
                     break;
         }
+    },
+    
+    //Toggles visibility of remove button when mousing over an item
+    toggleRemove: function(ev) {
+        $(ev.target)
+            .find('.remove')
+            .toggle();
     }
 };
 

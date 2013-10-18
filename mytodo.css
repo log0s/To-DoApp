@@ -74,6 +74,7 @@ h1 {
     float: right;
     color: #000000;
     cursor: pointer;
+    display: none;
 }
 
 .toDoText {
