@@ -15,7 +15,8 @@ var app = {
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
             .on('dblclick', '.todo', app.editItem)
-            .on('mouseenter mouseleave', '.todo', app.toggleRemove);
+            .on('mouseenter mouseleave', '.todo', app.toggleRemove)
+            .sortable( {containment: 'parent', cursor: '-webkit-grabbing'} );
         $selectors.click(app.selectItems);
     },
     

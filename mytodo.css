@@ -56,6 +56,10 @@ h1 {
     margin-right: none;
 }
 
+#items li {
+    cursor: -webkit-grab;
+}
+
 .todo {
     font-size: 24px;
 }
