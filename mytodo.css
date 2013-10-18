@@ -83,6 +83,7 @@ h1 {
     font-weight: bold;
     font-size: 24px;
     border: none;
+    width: 90%;
 }
 
 .toDoInput:focus {

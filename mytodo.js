@@ -37,7 +37,7 @@ var app = {
                     .text(text)
                 .end()
                 .find('.toDoInput')
-                    .attr('value', text)
+                    .val(text)
                 .end()
                 .appendTo($items);
             
@@ -74,6 +74,7 @@ var app = {
             .hide()
             .siblings('.toDoInput')
                 .show()
+                .focus()
                 .on('keypress blur', app.submitEdit);
     },
         
@@ -87,7 +88,6 @@ var app = {
             //Check whether there is any input
             if (text !== ''){
                 $target
-                    .attr('value', text)
                     .hide()
                     .siblings('.toDoText')
                         .text(text)
