@@ -8,7 +8,7 @@ var $itemEntry = $('#itemEntry'),
 
 //Object to contain all app functions
 var app = {
-    //Actions to execute when app is loaded
+    //Binds events to jQuery objects when the page is loaded
     init: function() {        
         $itemEntry.keydown(app.addItem);
         $items
@@ -73,7 +73,7 @@ var app = {
         
     //Submits a completed edit on an item
     submitEdit: function(ev) {
-        //Check that the key pressed is enter
+        //Checks that the key pressed is enter or that the item is no longer focused
         if ((ev.which === 13) || (ev.type === 'blur')) {
             var $target = $(ev.target),
             text = $target.val();
