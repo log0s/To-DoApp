@@ -93,6 +93,36 @@ var app = {
             }
         }
     },
+        
+    //Toggles between all, non-completed, and completed items via click selection
+    selectItems: function(ev) {
+        var $todos = $items.find('li'),
+            $target = $(ev.target);
+        
+        $todos.hide();
+        $selectors.removeClass('selected');
+        
+        switch(ev.target.id) {
+                case 'All':
+                    $todos.show();
+                    $target.addClass('selected');
+                    break;
+                
+                case 'Active':
+                    $todos
+                        .not('.completed')
+                        .show();
+                    $target.addClass('selected');
+                    break;
+                
+                case 'Completed':
+                    $todos
+                        .filter('.completed')
+                        .show();
+                    $target.addClass('selected');
+                    break;
+        }
+    },
     
     //Updates the number of non-completed items and toggles visibility of the status bar
     updateCount: function() {
@@ -132,36 +162,6 @@ var app = {
         //Class is not completed and only completed items are being shown
         else if (!completed && (selected === 'Completed')) {
             $targetLI.hide();
-        }
-    },
-    
-    //Toggles between all, non-completed, and completed items via click selection
-    selectItems: function(ev) {
-        var $todos = $items.find('li'),
-            $target = $(ev.target);
-        
-        $todos.hide();
-        $selectors.removeClass('selected');
-        
-        switch(ev.target.id) {
-                case 'All':
-                    $todos.show();
-                    $target.addClass('selected');
-                    break;
-                
-                case 'Active':
-                    $todos
-                        .not('.completed')
-                        .show();
-                    $target.addClass('selected');
-                    break;
-                
-                case 'Completed':
-                    $todos
-                        .filter('.completed')
-                        .show();
-                    $target.addClass('selected');
-                    break;
         }
     },
     
