@@ -8,6 +8,7 @@ var $itemEntry = $('#itemEntry'),
 
 //Object to contain all app functions
 var app = {
+    //Actions to execute when app is loaded
     init: function() {        
         $itemEntry.keydown(app.addItem);
         $items
