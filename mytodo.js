@@ -17,6 +17,7 @@ var app = {
                         cursor: '-webkit-grabbing',
                         opacity: '0.5'} )
             .on('sortstart sortstop', app.checkSort)
+        $(document)
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
             .on('dblclick', '.todo', app.editItem)
@@ -158,27 +159,33 @@ var app = {
     //Dynamically updates item visibility based on current display settings
     updateVisibility: function($target) {
         var $targetLI = $target.closest('li'),
+            $targetRemove = $target.siblings('.remove'),
             completed = $targetLI.hasClass('completed'),
             selected = $selectors.filter('.selected').text();
         
-        //Class is completed and only non-completed items are being shown
-        if(completed && (selected === 'Active')) {
+        if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
             $targetLI.hide();
-        }
-        //Class is not completed and only completed items are being shown
-        else if (!completed && (selected === 'Completed')) {
-            $targetLI.hide();
+            $targetRemove.hide();
         }
     },
     
     //Toggles visibility of remove button when mousing over an item
     toggleRemove: function(ev) {
-        target = ev.target;
-        //Check if the list is being sorted/the sorting target = the event target
+        var target = ev.target,
+            eventType = ev.type,
+            $target = $(target);
+
         if ((!sorting.state) || (target === sorting.target)) {
-            $(target)
-                .find('.remove')
-                .toggle();
+            if(eventType === 'mouseenter') {
+                $target
+                    .find('.remove')
+                    .show();
+            }
+            else if (eventType === 'mouseleave') {
+                $target
+                    .find('.remove')
+                    .hide();
+            }
         }
     },
     
