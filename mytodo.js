@@ -12,18 +12,20 @@ var app = {
     //Binds events to jQuery objects when the page is loaded
     init: function() {        
         $itemEntry.keydown(app.addItem);
+        
+        $selectors.click(app.selectItems);
+        
         $items
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
                         opacity: '0.5'} )
-            .on('sortstart sortstop', app.checkSort)
+            .on('sortstart sortstop', app.checkSort);
+        
         $(document)
             .on('click', '.remove', app.removeItem)
             .on('click', '.toDoText', app.toggleItem)
             .on('dblclick', '.todo', app.editItem)
             .on('mouseenter mouseleave', '.todo', app.toggleRemove);
-                    
-        $selectors.click(app.selectItems);
     },
     
     //Retrieves input from entry field on pressing enter and adds a styled li element    
@@ -36,10 +38,10 @@ var app = {
                 .clone()
                 .find('.toDoText')
                     .text(text)
-                .end()
+                    .end()
                 .find('.toDoInput')
                     .val(text)
-                .end()
+                    .end()
                 .appendTo($items);
             
             $itemEntry.val('');
@@ -51,7 +53,7 @@ var app = {
     removeItem: function(ev) {
         $(ev.target)
             .closest('li')
-            .remove();
+                .remove();
         
         app.updateCount();
     },
@@ -72,11 +74,11 @@ var app = {
     editItem: function(ev) {
         $(ev.target)
             .find('.toDoText')
-            .hide()
-            .siblings('.toDoInput')
-                .show()
-                .focus()
-                .on('keypress blur', app.submitEdit);
+                .hide()
+                .siblings('.toDoInput')
+                    .show()
+                    .focus()
+                    .on('keypress blur', app.submitEdit);
     },
         
     //Submits a completed edit on an item
@@ -112,20 +114,23 @@ var app = {
         switch(ev.target.id) {
                 case 'All':
                     $todos.show();
+                
                     $target.addClass('selected');
                     break;
                 
                 case 'Active':
                     $todos
                         .not('.completed')
-                        .show();
+                            .show();
+                
                     $target.addClass('selected');
                     break;
                 
                 case 'Completed':
                     $todos
                         .filter('.completed')
-                        .show();
+                            .show();
+
                     $target.addClass('selected');
                     break;
         }
@@ -181,12 +186,12 @@ var app = {
             if(eventType === 'mouseenter') {
                 $target
                     .find('.remove')
-                    .show();
+                        .show();
             }
             else if (eventType === 'mouseleave') {
                 $target
                     .find('.remove')
-                    .hide();
+                        .hide();
             }
         }
     },
