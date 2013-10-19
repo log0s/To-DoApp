@@ -158,14 +158,16 @@ var app = {
     
     //Dynamically updates item visibility based on current display settings
     updateVisibility: function($target) {
-        var $targetLI = $target.closest('li'),
-            $targetRemove = $target.siblings('.remove'),
-            completed = $targetLI.hasClass('completed'),
-            selected = $selectors.filter('.selected').text();
+        var completed = $target.closest('li').hasClass('completed'),
+            selected = $selectors.filter('.selected').attr('id');
         
         if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
-            $targetLI.hide();
-            $targetRemove.hide();
+            $target
+                .closest('li')
+                    .hide()
+                .end()
+                .siblings('.remove')
+                    .hide();
         }
     },
     
