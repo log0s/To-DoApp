@@ -6,6 +6,7 @@ var sorting = { state: false, target: {} },
     $statusBar = $('#statusBar'),
     $remaining = $('#remaining'),
     $selectors = $('#selector li'),
+    $help = $('#help'),
     $helpDisplay = $('#helpDisplay'),
     $toDoItem = $('<li class="todo list-group-item"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove glyphicon glyphicon-remove"></span></li>');
 
@@ -20,7 +21,7 @@ var app = {
         
         $selectors.click(app.selectItems);
         
-        $('#help')
+        $help
             .hover(app.toggleHelp, app.toggleHelp)
             .click(app.lockHelp);
         
@@ -195,6 +196,13 @@ var app = {
     //Locks or unlocks the help display
     lockHelp: function() {
         locked = !locked;
+        
+        if(locked) {
+            $help.css('color', '#d60000');
+        }
+        else {
+            $help.css('color', '#00a3a3');
+        }
     },
     
     //Toggles visibility of remove button when mousing over an item
