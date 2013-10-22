@@ -1,5 +1,6 @@
-//Create jQuery objects for commonly used DOM elements and default to-do element as well as variable to detect whether items are currently being sorted
+//Create jQuery objects for commonly used DOM elements and default to-do element as well as variables to detect sorting state/target and lock status of help panel
 var sorting = { state: false, target: {} },
+    locked = false,
     $itemEntry = $('#itemEntry'),
     $items = $('#items'),
     $statusBar = $('#statusBar'),
@@ -15,7 +16,9 @@ var app = {
         
         $selectors.click(app.selectItems);
         
-        $('#help').click(app.toggleHelp);
+        $('#help')
+            .hover(app.toggleHelp, app.toggleHelp)
+            .click(app.lockHelp);
         
         $items
             .sortable( {containment: 'parent', 
@@ -178,9 +181,16 @@ var app = {
         }
     },
     
-    //Toggles visibility of help display when help button is clicked
+    //Toggles visibility of help display when help button is moused over
     toggleHelp: function() {
-        $('#helpDisplay').toggle('fold');
+        if(!locked) {
+            $('#helpDisplay').toggle('fold');
+        }
+    },
+    
+    //Locks or unlocks the help menu open
+    lockHelp: function() {
+        locked = !locked;
     },
     
     //Toggles visibility of remove button when mousing over an item
