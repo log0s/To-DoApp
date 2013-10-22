@@ -80,6 +80,9 @@ h1 {
     left: 580px;
     top: 87px;
     font-size: 18px;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: 3px;
 }
 
 #helpDisplay ul {
