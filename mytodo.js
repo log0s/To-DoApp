@@ -192,7 +192,7 @@ var app = {
         }
     },
     
-    //Locks or unlocks the help menu open
+    //Locks or unlocks the help display
     lockHelp: function() {
         locked = !locked;
     },
