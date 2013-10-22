@@ -85,6 +85,15 @@ h1 {
 #helpDisplay ul {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 0;
+}
+
+#helpDisplay li {
+    margin-bottom: 5px;
+}
+
+#helpDisplay li:last-child {
+    margin-bottom: 0;
 }
 
 .helpStrong {
