@@ -82,13 +82,12 @@ h1 {
     font-size: 18px;
     border: 1px solid black;
     border-radius: 0;
-    padding: 3px;
 }
 
 #helpDisplay ul {
     list-style-type: none;
     padding: 0;
-    margin-bottom: 0;
+    margin: 3px;
 }
 
 #helpDisplay li {
