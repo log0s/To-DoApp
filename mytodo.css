@@ -12,6 +12,7 @@ h1 {
 
 #wrapper {
     margin: 0 35% 0 35%;
+    position: relative;
 }
 
 #main {
@@ -69,6 +70,25 @@ h1 {
     margin: 3px 0px 3px 3px;
     height: 20px;
     width: 20px;
+}
+
+#helpDisplay {
+    position: absolute;
+    display: none;
+    width: 500px;
+    left: 580px;
+    top: 87px;
+    font-size: 18px;
+}
+
+#helpDisplay ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.helpStrong {
+    font-weight: bold;
+    color: #00a3a3;
 }
 
 .todo {

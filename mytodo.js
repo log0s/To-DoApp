@@ -15,6 +15,8 @@ var app = {
         
         $selectors.click(app.selectItems);
         
+        $('#help').click(app.toggleHelp);
+        
         $items
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
@@ -174,6 +176,11 @@ var app = {
                 .siblings('.remove')
                     .hide();
         }
+    },
+    
+    //Toggles visibility of help display when help button is clicked
+    toggleHelp: function() {
+        $('#helpDisplay').toggle('fold');
     },
     
     //Toggles visibility of remove button when mousing over an item
