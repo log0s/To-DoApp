@@ -102,6 +102,7 @@ h1 {
 
 .todo {
     font-size: 24px;
+    cursor: -webkit-grab;
 }
 
 .selected {
@@ -123,6 +124,7 @@ h1 {
 .toDoText {
     margin-bottom: 0;
     height: 36px;
+    cursor: default;
 }
 
 .toDoInput {
