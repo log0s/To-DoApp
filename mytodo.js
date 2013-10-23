@@ -19,11 +19,14 @@ var app = {
         
         $itemEntry.keydown(app.addItem);
         
-        $selectors.click(app.selectItems);
+        $selectors
+            .click(app.selectItems)
+            .mousedown(app.preventText);
         
         $help
             .hover(app.toggleHelp, app.toggleHelp)
-            .click(app.lockHelp);
+            .click(app.lockHelp)
+            .mousedown(app.preventText);
         
         $items
             .sortable( {containment: 'parent', 
@@ -229,6 +232,11 @@ var app = {
         else {
             sorting = false;
         }
+    },
+    
+    //Prevents the text cursor from showing on click
+    preventText: function(ev) {
+        ev.preventDefault();
     }
 };
 
