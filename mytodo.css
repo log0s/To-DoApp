@@ -134,7 +134,6 @@ h1 {
     font-size: 24px;
     border: none;
     cursor: text;
-    width: 90%;
 }
 
 .toDoInput:focus {

@@ -1,6 +1,9 @@
-//Create jQuery objects for commonly used DOM elements and default to-do element as well as variables to detect sorting state/target and lock status of help panel
+//Create jQuery objects for commonly used DOM elements and app-wide variables
 var sorting = { state: false, target: {} },
     locked = false,
+    clicks = 0,
+    delay = 300,
+    timer = null,
     $itemEntry = $('#itemEntry'),
     $items = $('#items'),
     $statusBar = $('#statusBar'),
@@ -36,8 +39,7 @@ var app = {
         
         $(document)
             .on('click', '.remove', app.removeItem)
-            .on('click', '.toDoText', app.toggleItem)
-            .on('dblclick', '.todo', app.editItem)
+            .on('click', '.toDoText', app.clickItem)
             .on('mouseenter mouseleave', '.todo', app.toggleRemove);
     },
     
@@ -76,6 +78,23 @@ var app = {
         app.updateCount();
     },
     
+    //Runs different functions depending on whether an item is clicked or double clicked
+    clickItem: function(ev) {
+        clicks++; //count number of clicks
+        
+        if (clicks === 1) {
+            timer = setTimeout(function() {
+                app.toggleItem(ev);
+                clicks = 0; //reset counter if action is performed
+            }, delay);
+        }
+        else {
+            clearTimeout(timer);
+            app.editItem(ev);
+            clicks = 0; //reset counter if action is performed
+        }
+    },
+            
     //Marks an item as completed/not completed when it is clicked
     toggleItem: function(ev) {
         var $target = $(ev.target);
@@ -91,12 +110,11 @@ var app = {
     //Allows editing an item on double click
     editItem: function(ev) {
         $(ev.target)
-            .find('.toDoText')
-                .hide()
-                .siblings('.toDoInput')
-                    .show()
-                    .focus()
-                    .on('keypress blur', app.submitEdit);
+            .hide()
+            .siblings('.toDoInput')
+                .show()
+                .focus()
+                .on('keypress blur', app.submitEdit);
     },
         
     //Submits a completed edit on an item
