@@ -136,6 +136,8 @@ var app = {
             else {
             app.removeItem(ev);
             }
+            
+            app.updateCount();
         }
     },
         
