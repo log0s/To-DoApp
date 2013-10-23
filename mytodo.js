@@ -45,17 +45,22 @@ var app = {
     addItem: function(ev) {
         var text = $itemEntry.val();
         
-        //Checks that the key pressed was enter and the entry field is not blank
+        //Check that the key pressed was enter and the entry field is not blank
         if ((ev.which === 13) && (text !== '')) {
-            $toDoItem
-                .clone()
-                .find('.toDoText')
-                    .text(text)
-                    .end()
-                .find('.toDoInput')
-                    .val(text)
-                    .end()
-                .appendTo($items);
+            var newItem = $toDoItem
+                            .clone()
+                            .find('.toDoText')
+                                .text(text)
+                                .end()
+                            .find('.toDoInput')
+                                .val(text)
+                                .end()
+                            .appendTo($items);
+            
+            //Hide item if toggle selector is set to Completed
+            if ( $('#Completed').hasClass('selected') ) {
+                newItem.hide();
+            }
             
             $itemEntry.val('');
             app.updateCount();
@@ -118,33 +123,27 @@ var app = {
         
     //Toggles between all, non-completed, and completed items via click selection
     selectItems: function(ev) {
-        var $todos = $items.find('li'),
-            $target = $(ev.target);
+        var $todos = $items.find('li');
         
         $todos.hide();
         $selectors.removeClass('selected');
+        $(ev.target).addClass('selected');
         
         switch(ev.target.id) {
                 case 'All':
                     $todos.show();
-                
-                    $target.addClass('selected');
                     break;
                 
                 case 'Active':
                     $todos
                         .not('.completed')
                             .show();
-                
-                    $target.addClass('selected');
                     break;
                 
                 case 'Completed':
                     $todos
                         .filter('.completed')
                             .show();
-
-                    $target.addClass('selected');
                     break;
         }
     },
@@ -208,14 +207,15 @@ var app = {
         var target = ev.target,
             eventType = ev.type,
             $target = $(target);
-
+        
+        //If list is not being sorted or event target is same as sorting target
         if ((!sorting.state) || (target === sorting.target)) {
             if(eventType === 'mouseenter') {
                 $target
                     .find('.remove')
                         .show();
             }
-            else if (eventType === 'mouseleave') {
+            else {
                 $target
                     .find('.remove')
                         .hide();
