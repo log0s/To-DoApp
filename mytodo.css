@@ -1,13 +1,13 @@
 body {
     background-color: #c2c2c2;
     font-family: sans-serif;
+    cursor: default;
 }
 
 h1 {
     text-align: center;
     color: #990000;
     font-size: 70px;
-    cursor: default;
 }
 
 #wrapper {
@@ -27,6 +27,7 @@ h1 {
     padding-left: 5px;
     height: 70px;
     border: none;
+    cursor: text;
 }
 
 #itemEntry:focus {
@@ -42,7 +43,6 @@ h1 {
 
 #remaining {
     float: left;
-    cursor: default;
 }
 
 #selector {
@@ -59,10 +59,6 @@ h1 {
 
 #selector li:last-child {
     margin-right: none;
-}
-
-#items li {
-    cursor: -webkit-grab;
 }
 
 #help {
@@ -121,14 +117,12 @@ h1 {
 .remove {
     float: right;
     color: #000000;
-    cursor: pointer;
     display: none;
 }
 
 .toDoText {
     margin-bottom: 0;
     height: 36px;
-    cursor: pointer;
 }
 
 .toDoInput {
@@ -137,6 +131,7 @@ h1 {
     font-weight: bold;
     font-size: 24px;
     border: none;
+    cursor: text;
     width: 90%;
 }
 
