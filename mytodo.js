@@ -277,9 +277,7 @@ var app = {
                         .show();
             }
             else {
-                $target
-                    .find('.remove')
-                        .hide();
+                $('.remove').hide();
             }
         }
     },
