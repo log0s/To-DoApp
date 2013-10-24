@@ -35,7 +35,8 @@ var app = {
         $items
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
-                        opacity: '0.5'} )
+                        opacity: '0.5',
+                        update: app.updateStorage} )
             .on('sortstart sortstop', app.checkSort);
         
         $(document)
@@ -44,6 +45,29 @@ var app = {
             .on('mouseenter mouseleave', '.todo', app.toggleRemove);
     },
     
+    //Stores all to-do items in local storage
+    updateStorage: function() {
+        //Clear previous data
+        savedData = {};
+        //Save the text and completed state of every item
+        $('.todo').each(function(i) {
+            var $this = $(this),
+                key = 'todo' + i.toString(),
+                current = { text: '', completed: false };
+            
+            if ($this.hasClass('completed')) {
+                current.completed = true;
+            }
+            
+            current.text = $this.find('.toDoText').text();
+            
+            savedData[key] = current;
+        });
+                        
+        //Push the completed data to local storage
+        localStorage.todos = JSON.stringify(savedData);
+    },
+                
     //Add styled li element after pressing enter or when called by loadItems    
     addItem: function(ev) {
         var text = $itemEntry.val(),
@@ -79,6 +103,7 @@ var app = {
             
             app.updateVisibility(newItem);
             app.updateCount();
+            app.updateStorage();
         }
     },
     
@@ -89,6 +114,7 @@ var app = {
                 .remove();
         
         app.updateCount();
+        app.updateStorage();
     },
     
     //Runs different functions depending on whether an item is clicked or double clicked
@@ -116,8 +142,9 @@ var app = {
             .closest('li')
                 .toggleClass('completed');
         
-        app.updateCount();
         app.updateVisibility($target);
+        app.updateCount();
+        app.updateStorage();
     },
     
     //Allows editing an item on double click
@@ -151,6 +178,7 @@ var app = {
             }
             
             app.updateCount();
+            app.updateStorage();
         }
     },
         

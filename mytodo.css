@@ -119,6 +119,7 @@ h1 {
     float: right;
     color: #000000;
     display: none;
+    cursor: default;
 }
 
 .toDoText {
