@@ -1,5 +1,6 @@
 //Create jQuery objects for commonly used DOM elements and app-wide variables
 var sorting = { state: false, target: {} },
+    savedData = {},
     locked = false,
     clicks = 0,
     delay = 300,
@@ -43,12 +44,18 @@ var app = {
             .on('mouseenter mouseleave', '.todo', app.toggleRemove);
     },
     
-    //Retrieves input from entry field on pressing enter and adds a styled li element    
+    //Add styled li element after pressing enter or when called by loadItems    
     addItem: function(ev) {
-        var text = $itemEntry.val();
+        var text = $itemEntry.val(),
+            which = ev.which;
         
-        //Check that the key pressed was enter and the entry field is not blank
-        if ((ev.which === 13) && (text !== '')) {
+        //If key pressed was enter and entry field is not blank or called by loadItems
+        if ( ((which === 13) && (text !== '')) || (which === 'loadItems') ) {
+            //Load text if called by loadItems
+            if (which === 'loadItems') {
+                text = ev.loadText;
+            }
+            
             var newItem = $toDoItem
                             .clone()
                             .find('.toDoText')
@@ -56,15 +63,21 @@ var app = {
                                 .end()
                             .find('.toDoInput')
                                 .val(text)
-                                .end()
-                            .appendTo($items);
+                                .end();
             
-            //Hide item if toggle selector is set to Completed
-            if ( $('#Completed').hasClass('selected') ) {
-                newItem.hide();
+            //Add completed class if specified
+            if (ev.loadCompleted) {
+                newItem
+                    .addClass('completed')
+                    .find('.toDoText')
+                        .addClass('completed')
+                        .end();
             }
             
+            newItem.appendTo($items);
             $itemEntry.val('');
+            
+            app.updateVisibility(newItem);
             app.updateCount();
         }
     },
@@ -195,7 +208,7 @@ var app = {
     
     //Dynamically updates item visibility based on current display settings
     updateVisibility: function($target) {
-        var completed = $target.closest('li').hasClass('completed'),
+        var completed = $target.hasClass('completed'),
             selected = $selectors.filter('.selected').attr('id');
         
         if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
