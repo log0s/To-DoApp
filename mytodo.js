@@ -265,12 +265,11 @@ var app = {
     
     //Toggles visibility of remove button when mousing over an item
     toggleRemove: function(ev) {
-        var target = ev.target,
-            eventType = ev.type;
+        var target = ev.target;
         
         //If list is not being sorted or event target is same as sorting target
         if ((!sorting.state) || (target === sorting.target)) {
-            if(eventType === 'mouseenter') {
+            if(ev.type === 'mouseenter') {
                 $(target)
                     .find('.remove')
                         .show();
