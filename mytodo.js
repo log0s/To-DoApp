@@ -69,8 +69,8 @@ var app = {
     
     //Stores all to-do items in local storage
     saveItems: function() {
-        //Clear previous data
-        todoItems = {};
+        todoItems = {}; //clear previous data
+        
         //Save the text and completed state of every item
         $('.todo').each(function(i) {
             var $this = $(this),
@@ -86,7 +86,6 @@ var app = {
             todoItems[key] = current;
         });
                         
-        //Push the completed data to local storage
         localStorage.todos = JSON.stringify(todoItems);
     },
     
@@ -173,7 +172,7 @@ var app = {
         
     //Submits a completed edit on an item
     submitEdit: function(ev) {
-        //Checks that the key pressed is enter or that the item is no longer focused
+        //Check that the key pressed is enter or that the item is no longer focused
         if ((ev.which === 13) || (ev.type === 'blur')) {
             var $target = $(ev.target),
             text = $target.val();
@@ -200,7 +199,7 @@ var app = {
     selectItems: function(ev) {
         var $todos = $items.find('li');
         
-        $todos.hide();
+        $todos.hide(); //hide all to-do items
         $selectors.removeClass('selected');
         $(ev.target).addClass('selected');
         
@@ -255,7 +254,7 @@ var app = {
     updateVisibility: function($target) {
         var completed = $target.hasClass('completed'),
             selected = $selectors.filter('.selected').attr('id');
-        
+        //Item completed and Active selected or item not completed and Completed selected
         if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
             $target
                 .closest('li')
@@ -297,7 +296,7 @@ var app = {
         }
     },
     
-    //Changes boolean value of a variable if the items are being sorted
+    //Detects if items are being sorted and assigns a sorting target if they are
     checkSort: function(ev) {
         if (ev.type === 'sortstart') {
             sorting.state = true;
