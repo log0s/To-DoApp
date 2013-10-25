@@ -1,6 +1,6 @@
 //Create jQuery objects for commonly used DOM elements and app-wide variables
 var sorting = { state: false, target: {} },
-    savedData = {},
+    todoItems = {},
     locked = false,
     clicks = 0,
     delay = 300,
@@ -36,7 +36,7 @@ var app = {
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
                         opacity: '0.5',
-                        update: app.updateStorage} )
+                        update: app.saveItems} )
             .on('sortstart sortstop', app.checkSort);
         
         $(document)
@@ -46,9 +46,9 @@ var app = {
     },
     
     //Stores all to-do items in local storage
-    updateStorage: function() {
+    saveItems: function() {
         //Clear previous data
-        savedData = {};
+        todoItems = {};
         //Save the text and completed state of every item
         $('.todo').each(function(i) {
             var $this = $(this),
@@ -61,11 +61,11 @@ var app = {
             
             current.text = $this.find('.toDoText').text();
             
-            savedData[key] = current;
+            todoItems[key] = current;
         });
                         
         //Push the completed data to local storage
-        localStorage.todos = JSON.stringify(savedData);
+        localStorage.todos = JSON.stringify(todoItems);
     },
                 
     //Add styled li element after pressing enter or when called by loadItems    
@@ -103,7 +103,6 @@ var app = {
             
             app.updateVisibility(newItem);
             app.updateCount();
-            app.updateStorage();
         }
     },
     
@@ -114,7 +113,6 @@ var app = {
                 .remove();
         
         app.updateCount();
-        app.updateStorage();
     },
     
     //Runs different functions depending on whether an item is clicked or double clicked
@@ -144,7 +142,6 @@ var app = {
         
         app.updateVisibility($target);
         app.updateCount();
-        app.updateStorage();
     },
     
     //Allows editing an item on double click
@@ -178,7 +175,7 @@ var app = {
             }
             
             app.updateCount();
-            app.updateStorage();
+            app.saveItems();
         }
     },
         
@@ -232,6 +229,7 @@ var app = {
         }
         
         $remaining.text(count);
+        app.saveItems();
     },
     
     //Dynamically updates item visibility based on current display settings
