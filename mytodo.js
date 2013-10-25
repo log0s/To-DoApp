@@ -45,6 +45,28 @@ var app = {
             .on('mouseenter mouseleave', '.todo', app.toggleRemove);
     },
     
+    //Loads saved to-do items from local storage and adds them to the DOM
+    loadItems: function() {
+        todoItems = JSON.parse(localStorage.todos);
+        
+        for (var item in todoItems) {
+            var newItem = app.createItem(todoItems[item]);
+            
+            //Add completed class if the saved item had it
+            if (todoItems[item].completed) {
+                newItem
+                    .addClass('completed')
+                    .find('.toDoText')
+                        .addClass('completed')
+                        .end()
+            }
+        
+            newItem.appendTo($items);
+        }
+        
+        app.updateCount();
+    },
+    
     //Stores all to-do items in local storage
     saveItems: function() {
         //Clear previous data
@@ -67,41 +89,36 @@ var app = {
         //Push the completed data to local storage
         localStorage.todos = JSON.stringify(todoItems);
     },
+    
+    //Creates styled li element for use in loadItems and addItem
+    createItem: function(item) {
+        var text = item.text,
+            newItem = $toDoItem
+                        .clone()
+                        .find('.toDoText')
+                            .text(text)
+                            .end()
+                        .find('.toDoInput')
+                            .text(text)
+                            .end();
+        
+        return newItem;
+    },
                 
-    //Add styled li element after pressing enter or when called by loadItems    
+    //Add styled li element after pressing enter    
     addItem: function(ev) {
-        var text = $itemEntry.val(),
+        var entry = $itemEntry.val(),
             which = ev.which;
         
-        //If key pressed was enter and entry field is not blank or called by loadItems
-        if ( ((which === 13) && (text !== '')) || (which === 'loadItems') ) {
-            //Load text if called by loadItems
-            if (which === 'loadItems') {
-                text = ev.loadText;
-            }
-            
-            var newItem = $toDoItem
-                            .clone()
-                            .find('.toDoText')
-                                .text(text)
-                                .end()
-                            .find('.toDoInput')
-                                .val(text)
-                                .end();
-            
-            //Add completed class if specified
-            if (ev.loadCompleted) {
-                newItem
-                    .addClass('completed')
-                    .find('.toDoText')
-                        .addClass('completed')
-                        .end();
-            }
+        //If key pressed was enter and entry field is not blank
+        if ( (which === 13) && (entry !== '') ) {
+            var callItem = { text: entry },
+                newItem = app.createItem(callItem);
             
             newItem.appendTo($items);
+            
             $itemEntry.val('');
             
-            app.updateVisibility(newItem);
             app.updateCount();
         }
     },
@@ -214,18 +231,20 @@ var app = {
         
         //No items in the list
         if (length === 0) {
-            $statusBar.toggle();
+            $statusBar.hide();
         }
         //Exactly one non-completed item in the list
         else if (notCompleted === 1) {
             count = '1 item left';
-            if ($statusBar.css('display') === 'none') {
-                $statusBar.toggle();
-            }
         }
         //All other cases
         else {
             count = notCompleted.toString() + ' items left';
+        }
+        
+        //Change status bar visibility based on items in the list
+        if ( ($statusBar.css('display') === 'none') && (length >= 1) ) {
+                $statusBar.show();
         }
         
         $remaining.text(count);
@@ -297,4 +316,5 @@ var app = {
 
 $(function() {
     app.init();
+    app.loadItems();
 });
