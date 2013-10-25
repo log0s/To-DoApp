@@ -1,3 +1,5 @@
+'use strict';
+
 //Create jQuery objects for commonly used DOM elements and app-wide variables
 var sorting = { state: false, target: {} },
     todoItems = {},
@@ -225,7 +227,7 @@ var app = {
     //Updates the number of non-completed items and toggles visibility of the status bar
     updateCount: function() {
         var count,
-            length = $items.find('li').length;
+            length = $items.find('li').length,
             notCompleted = length - $items.find('li.completed').length;
         
         //No items in the list
