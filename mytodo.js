@@ -277,8 +277,6 @@ var app = {
     //Locks or unlocks the help display
     lockHelp: function() {
         locked = !locked;
-
-        $help.css('color', locked ? '#d60000' : '#00a3a3');
     },
     
     //Toggles visibility of remove button when mousing over an item
