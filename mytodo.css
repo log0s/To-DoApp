@@ -18,7 +18,7 @@ h1 {
 }
 
 #main {
-    border-top: 25px solid black;
+    border-top: 26px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -70,11 +70,11 @@ h1 {
 
 #help {
     float: right;
-    color: #00a3a3;
     cursor: pointer;
-    margin: 3px 0px 3px 3px;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
+    margin: 5px;
+    background-image: url(icons/help.png);
 }
 
 #helpDisplay {
@@ -140,7 +140,7 @@ h1 {
     height: 24px;
     width: 24px;
     cursor: default;
-    background: url(icons/1382925037_cross-24.png);
+    background: url(icons/remove.png);
 }
 
 .toDoText {
