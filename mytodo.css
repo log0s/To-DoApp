@@ -1,6 +1,6 @@
 body {
     background-color: #c2c2c2;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     cursor: default;
 }
 
@@ -8,6 +8,8 @@ h1 {
     text-align: center;
     color: #990000;
     font-size: 70px;
+    font-weight: normal;
+    margin: 10px;
 }
 
 #wrapper {
@@ -37,6 +39,7 @@ h1 {
 }
 
 #statusBar {
+    font-size: 14px;
     color: #ffffff;
     height: 20px;
     background-color: #00a3a3;
@@ -45,23 +48,24 @@ h1 {
 
 #remaining {
     float: left;
+    padding: 2px;
 }
 
 #selector {
     float: right;
     cursor: pointer;
-    padding: 0;
     margin: 0;
+    padding: 2px;
 }
 
 #selector li {
     display: inline;
     list-style-type: none;
-    padding-right: 2px;
+    margin-right: 10px;
 }
 
 #selector li:last-child {
-    padding-right: none;
+    margin-right: 2px;
 }
 
 #help {
@@ -112,8 +116,11 @@ h1 {
     font-size: 24px;
     cursor: -webkit-grab;
     list-style-type: none;
-    border: 1px solid black;
+    border: 1px solid #dddddd;
     width: 565 px;
+    background-color: #ffffff;
+    margin-bottom: -1px;
+    padding: 5px;
 }
 
 .selected {
@@ -141,11 +148,12 @@ h1 {
 
 .toDoInput {
     display: none;
-    font-family: sans-serif;
-    font-weight: bold;
     font-size: 24px;
     border: none;
     cursor: text;
+    margin: 0;
+    padding: 0;
+    height: 27px;
 }
 
 .toDoInput:focus {

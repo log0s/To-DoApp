@@ -14,7 +14,7 @@ var sorting = { state: false, target: {} },
     $selectors = $('#selector li'),
     $help = $('#help'),
     $helpDisplay = $('#helpDisplay'),
-    $toDoItem = $('<li class="todo list-group-item"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove glyphicon glyphicon-remove"></span></li>');
+    $toDoItem = $('<li class="todo"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove"></span></li>');
 
 //Object to contain all app functions
 var app = {
@@ -100,7 +100,7 @@ var app = {
                             .text(text)
                             .end()
                         .find('.toDoInput')
-                            .text(text)
+                            .val(text)
                             .end();
         
         return newItem;
