@@ -28,10 +28,12 @@ h1 {
     height: 70px;
     border: none;
     cursor: text;
+    width: 565px;
 }
 
 #itemEntry:focus {
     color: black;
+    outline: 0;
 }
 
 #statusBar {
@@ -48,17 +50,18 @@ h1 {
 #selector {
     float: right;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
 }
 
 #selector li {
     display: inline;
     list-style-type: none;
-    margin-right: 2px;
-    padding: 1px 2px 1px 2px;
+    padding-right: 2px;
 }
 
 #selector li:last-child {
-    margin-right: none;
+    padding-right: none;
 }
 
 #help {
@@ -95,6 +98,11 @@ h1 {
     margin-bottom: 0;
 }
 
+#items {
+    padding: 0;
+    margin: 0;
+}
+
 .helpStrong {
     font-weight: bold;
     color: #d60000;
@@ -103,6 +111,9 @@ h1 {
 .todo {
     font-size: 24px;
     cursor: -webkit-grab;
+    list-style-type: none;
+    border: 1px solid black;
+    width: 565 px;
 }
 
 .selected {
@@ -139,19 +150,4 @@ h1 {
 
 .toDoInput:focus {
     outline: 0;
-}
-
-/* Overriding default Bootstrap styling */
-.form-control {
-    border-radius: 0;
-}
-
-.list-group {
-    margin-bottom: 0;
-}
-
-.list-group-item {
-    /* Using !important to avoid redundancy with every pseudo-selector*/
-    border-radius: 0 !important;
-    padding: 5px;
 }
