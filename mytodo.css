@@ -9,7 +9,7 @@ h1 {
     color: #990000;
     font-size: 70px;
     font-weight: normal;
-    margin: 10px;
+    margin: 0 0 10px 0;
 }
 
 #wrapper {
@@ -82,10 +82,11 @@ h1 {
     display: none;
     width: 500px;
     left: 580px;
-    top: 87px;
+    top: 91px;
     font-size: 18px;
     border: 1px solid black;
     border-radius: 0;
+    background-color: #ffffff;
 }
 
 #helpDisplay ul {
@@ -120,7 +121,7 @@ h1 {
     width: 565 px;
     background-color: #ffffff;
     margin-bottom: -1px;
-    padding: 5px;
+    padding: 10px;
 }
 
 .selected {
@@ -135,9 +136,11 @@ h1 {
 
 .remove {
     float: right;
-    color: #000000;
-    display: none;
+    display: block;
+    height: 24px;
+    width: 24px;
     cursor: default;
+    background: url(icons/1382925037_cross-24.png);
 }
 
 .toDoText {

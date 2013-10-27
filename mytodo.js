@@ -14,7 +14,7 @@ var sorting = { state: false, target: {} },
     $selectors = $('#selector li'),
     $help = $('#help'),
     $helpDisplay = $('#helpDisplay'),
-    $toDoItem = $('<li class="todo"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove"></span></li>');
+    $toDoItem = $('<li class="todo"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove" style="display: none"></span></li>');
 
 //Object to contain all app functions
 var app = {
@@ -270,7 +270,7 @@ var app = {
     //Toggles visibility of help display when help button is moused over
     toggleHelp: function() {
         if(!locked) {
-            $helpDisplay.toggle('fold');
+            $helpDisplay.toggle();
         }
     },
     
