@@ -30,7 +30,7 @@ var app = {
             .mousedown(app.preventText);
         
         $help
-            .hover(app.toggleHelp, app.toggleHelp)
+            .hover(app.toggleHelp)
             .click(app.lockHelp)
             .mousedown(app.preventText);
         
