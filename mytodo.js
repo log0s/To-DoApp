@@ -277,6 +277,9 @@ var app = {
     //Locks or unlocks the help display
     lockHelp: function() {
         locked = !locked;
+        
+        var icon = locked ? 'icons/help-lock.png' : 'icons/help.png';
+        $help.css('background-image', 'url(' + icon + ')');
     },
     
     //Toggles visibility of remove button when mousing over an item
