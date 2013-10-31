@@ -55,13 +55,7 @@ var app = {
             var newItem = app.createItem(todoItems[item]);
             
             //Add completed class if the saved item had it
-            if (todoItems[item].completed) {
-                newItem
-                    .addClass('completed')
-                    .find('.toDoText')
-                        .addClass('completed')
-                        .end()
-            }
+            todoItems[item].completed ? newItem.addClass('completed') : null;
         
             newItem.appendTo($items);
         }
@@ -151,10 +145,7 @@ var app = {
     //Marks an item as completed/not completed when it is clicked
     toggleItem: function(ev) {
         var $target = $(ev.target);
-        $target
-            .toggleClass('completed')
-            .closest('li')
-                .toggleClass('completed');
+        $target.closest('li').toggleClass('completed');
         
         app.updateVisibility($target);
         app.updateCount();
