@@ -57,7 +57,7 @@ var app = {
                 var newItem = app.item.create(todoItems[item]);
             
                 //Add completed class if the saved item had it
-                todoItems[item].completed ? newItem.addClass('completed') : null;
+                if (todoItems[item].completed) { newItem.addClass('completed'); }
         
                 newItem.appendTo($items);
             }
@@ -75,7 +75,7 @@ var app = {
                     key = 'todo' + i.toString(),
                     current = { text: '', completed: false };
             
-                $this.hasClass('completed') ? current.completed = true : null;
+                if ($this.hasClass('completed')) { current.completed = true; }
             
                 current.text = $this.find('.toDoText').text();
             
