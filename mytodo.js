@@ -38,7 +38,7 @@ var app = {
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
                         opacity: '0.5',
-                        update: app.saveItems} )
+                        update: app.storage.save} )
             .on('sortstart sortstop', app.update.sortState);
         
         $(document)
