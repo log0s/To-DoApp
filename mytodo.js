@@ -106,15 +106,13 @@ var app = {
         return newItem;
     },
                 
-    //Add styled li element after pressing enter    
+    //Adds styled li element after pressing enter    
     addItem: function(ev) {
-        var entry = $itemEntry.val(),
-            which = ev.which;
+        var entry = $itemEntry.val();
         
         //If key pressed was enter and entry field is not blank
-        if ( (which === 13) && (entry !== '') ) {
-            var callItem = { text: entry },
-                newItem = app.createItem(callItem);
+        if ( (ev.which === 13) && (entry !== '') ) {
+            var newItem = app.createItem( { text: entry } );
             
             newItem.appendTo($items);
             
