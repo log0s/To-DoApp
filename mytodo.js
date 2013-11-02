@@ -29,7 +29,7 @@ var app = {
         $help
             .hover(app.help.toggleDisplay)
             .click(app.help.toggleLock)
-            .mousedown(function(ev) { ev.preventDefault(); }); //prevent cursor from changing to text when clicking these items
+            .mousedown(function(ev) { ev.preventDefault(); }); //prevent cursor from changing to text when clicking this item
         
         $items
             .sortable( {containment: 'parent', 
