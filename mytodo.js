@@ -79,22 +79,19 @@ var app = {
     },
     
     item: {
-        create: function(item) {
-            var text = item.text,
-                newItem = $toDoItem
-                            .clone()
-                            .find('.toDoText, .toDoInput')
-                                .val(text)
-                                .text(text)
-                                .end();
-        
-            return newItem;
+        create: function(object) {
+            return $toDoItem
+                        .clone()
+                        .find('.toDoText, .toDoInput')
+                            .val(object.text)
+                            .text(object.text)
+                            .end();
         },
                    
         add: function(ev) {
             var entry = $itemEntry.val();
         
-            if ( (ev.which === 13) && (entry !== '') ) {
+            if ((ev.which === 13) && (entry !== '')) {
                 var newItem = app.item.create( { text: entry } );
             
                 newItem.appendTo($items);
@@ -148,7 +145,7 @@ var app = {
         submitEdit: function(ev) {
             if ((ev.which === 13) || (ev.type === 'blur')) {
                 var $target = $(ev.target),
-                text = $target.val();
+                    text = $target.val();
             
                 if (text === ''){
                     app.item.remove(ev); //remove item if all text is deleted
@@ -169,7 +166,7 @@ var app = {
         filter: function(ev) {
             var $todos = $items.find('li');
         
-            $todos.hide(); //hide all to-do items
+            $todos.hide();
             
             $selectors.removeClass('selected');
             $(ev.target).addClass('selected');
@@ -206,25 +203,21 @@ var app = {
                 count = notCompleted.toString() + ' items left';
             }
         
-            if ( ($statusBar.css('display') === 'none') && (length >= 1) ) {
+            if (($statusBar.css('display') === 'none') && (length >= 1)) {
                 $statusBar.show();
             }
         
             $remaining.text(count);
+            
             app.storage.save();
         },
     
         visibility: function($target) {
-            var completed = $target.hasClass('completed'),
+            var completed = $target.closest('li').hasClass('completed'),
                 selected = $selectors.filter('.selected').attr('id');
             
             if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
-                $target
-                    .closest('li')
-                        .hide()
-                        .end()
-                    .siblings('.remove')
-                        .hide();
+                $target.closest('li').hide();
             }
         },
         
@@ -241,7 +234,7 @@ var app = {
         iconState: function(ev) {
             var target = ev.target;
         
-            if ( (!sorting.state) || (target === sorting.target) ) {
+            if ((!sorting.state) || (target === sorting.target)) {
                 if(ev.type === 'mouseenter') {
                     $(target).find('.remove').show();
                 }
