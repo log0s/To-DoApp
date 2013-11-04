@@ -92,12 +92,12 @@ var app = {
             var entry = $itemEntry.val();
         
             if ((ev.which === 13) && (entry !== '')) {
-                var newItem = app.item.create( { text: entry } );
-            
-                newItem.appendTo($items);
+                var rawItem = app.item.create( { text: entry } ),
+                    newItem = rawItem.appendTo($items);
             
                 $itemEntry.val('');
-            
+                
+                app.update.visibility(newItem);
                 app.update.remaining();
             }
         },
@@ -129,7 +129,7 @@ var app = {
             
             $target.closest('li').toggleClass('completed');
         
-            app.update.visibility($target);
+            app.update.visibility($target.closest('li'));
             app.update.remaining();
         },
     
@@ -213,7 +213,7 @@ var app = {
         },
     
         visibility: function($target) {
-            var completed = $target.closest('li').hasClass('completed'),
+            var completed = $target.hasClass('completed'),
                 selected = $selectors.filter('.selected').attr('id');
             
             if((completed && (selected === 'Active')) || (!completed && (selected === 'Completed'))) {
