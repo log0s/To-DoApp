@@ -83,11 +83,9 @@ var app = {
             var text = item.text,
                 newItem = $toDoItem
                             .clone()
-                            .find('.toDoText')
-                                .text(text)
-                                .end()
-                            .find('.toDoInput')
+                            .find('.toDoText, .toDoInput')
                                 .val(text)
+                                .text(text)
                                 .end();
         
             return newItem;
