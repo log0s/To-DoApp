@@ -125,11 +125,9 @@ var app = {
         },
             
         toggle: function(ev) {
-            var $target = $(ev.target);
-            
-            $target.closest('li').toggleClass('completed');
+            var $target = $(ev.target).closest('li').toggleClass('completed');
         
-            app.update.visibility($target.closest('li'));
+            app.update.visibility($target);
             app.update.remaining();
         },
     
