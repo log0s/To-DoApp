@@ -32,16 +32,14 @@ var app = {
             .mousedown(function(ev) { ev.preventDefault(); }); //prevent cursor from changing to text when clicking this item
         
         $items
+            .on('sortstart sortstop', app.update.sortState)
+            .delegate('.remove', 'click', app.item.remove)
+            .delegate('.toDoText', 'click', app.item.click)
+            .delegate('.todo', 'mouseenter mouseleave', app.update.iconState)
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
                         opacity: '0.5',
-                        update: app.storage.save} )
-            .on('sortstart sortstop', app.update.sortState);
-        
-        $(document)
-            .on('click', '.remove', app.item.remove)
-            .on('click', '.toDoText', app.item.click)
-            .on('mouseenter mouseleave', '.todo', app.update.iconState);
+                        update: app.storage.save} );
     },
     
     storage: {
@@ -51,7 +49,8 @@ var app = {
             for (var item in todoItems) {
                 var newItem = app.item.create(todoItems[item]);
             
-                if (todoItems[item].completed) { newItem.addClass('completed'); }
+                if (todoItems[item].completed)
+                    newItem.addClass('completed'); 
         
                 newItem.appendTo($items);
             }
@@ -85,15 +84,14 @@ var app = {
                         .find('.toDoText, .toDoInput')
                             .val(object.text)
                             .text(object.text)
-                            .end();
+                        .end();
         },
                    
         add: function(ev) {
             var entry = $itemEntry.val();
         
             if ((ev.which === 13) && (entry !== '')) {
-                var rawItem = app.item.create( { text: entry } ),
-                    newItem = rawItem.appendTo($items);
+                var newItem = app.item.create( { text: entry } ).appendTo($items);
             
                 $itemEntry.val('');
                 
@@ -245,9 +243,8 @@ var app = {
     
     help: {
         toggleDisplay: function() {
-            if(!locked) {
+            if(!locked)
                 $helpDisplay.toggle();
-            }
         },
     
         toggleLock: function() {
