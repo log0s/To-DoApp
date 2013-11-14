@@ -1,16 +1,18 @@
 body {
-    background-color: #c2c2c2;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-image: url('images/background.jpg');
+    font-family: 'Poiret One', "Helvetica Neue", Helvetica, Arial, sans-serif;
     cursor: default;
 }
 
 h1 {
     text-align: center;
-    color: #990000;
-    font-size: 70px;
-    font-weight: normal;
+    font-size: 90px;
     margin: 0 0 10px 0;
-}
+    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+    color: #9c8468;
+    opacity: 0.7;
+    font-family: 'Poiret One';
+    }
 
 #wrapper {
     margin: 0 35% 0 35%;
@@ -18,19 +20,21 @@ h1 {
 }
 
 #main {
-    border-top: 26px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 26px solid #440903;
+    background-color: #f5f1e7;
+    box-shadow: 5px 5px 20px #440903;
 }
 
 #itemEntry {
+    -webkit-box-sizing: border-box;
+    font-family: 'Poiret One';
     font-size: 24px;
-    padding-left: 5px;
+    padding-left: 10px;
     height: 70px;
     border: none;
     cursor: text;
-    width: 565px;
+    width: 100%;
+    background-color: #f5f1e7;
 }
 
 #itemEntry:focus {
@@ -39,11 +43,12 @@ h1 {
 }
 
 #statusBar {
-    font-size: 14px;
-    color: #ffffff;
+    font-size: 16px;
+    color: #f5f1e7;
     height: 20px;
-    background-color: #00a3a3;
+    background-color: #bf421a;
     display: none;
+    padding: 2px;
 }
 
 #remaining {
@@ -74,7 +79,7 @@ h1 {
     height: 16px;
     width: 16px;
     margin: 5px;
-    background-image: url(icons/help.png);
+    background-image: url(images/help.png);
 }
 
 #helpDisplay {
@@ -84,9 +89,7 @@ h1 {
     left: 580px;
     top: 91px;
     font-size: 18px;
-    border: 1px solid black;
-    border-radius: 0;
-    background-color: #ffffff;
+    background-color: #f5f1e7;
 }
 
 #helpDisplay ul {
@@ -114,24 +117,25 @@ h1 {
 }
 
 .todo {
+    -webkit-box-sizing: border-box;
     font-size: 24px;
     cursor: -webkit-grab;
     list-style-type: none;
-    border: 1px solid #dddddd;
-    width: 565 px;
-    background-color: #ffffff;
+    border: 1px dashed #e3dfd6;
+    width: 100%;
+    background-color: #f5f1e7;
     margin-bottom: -1px;
     padding: 10px;
 }
 
 .selected {
-    color: #990000;
+    color: #440903;
     font-weight: bold;
 }
 
 .completed {
     text-decoration: line-through;
-    color: #990000;
+    color: #c91421;
 }
 
 .remove {
@@ -140,7 +144,7 @@ h1 {
     height: 24px;
     width: 24px;
     cursor: default;
-    background: url(icons/remove.png);
+    background: url(images/remove.png);
 }
 
 .toDoText {

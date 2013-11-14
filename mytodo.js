@@ -250,7 +250,7 @@ var app = {
         toggleLock: function() {
             locked = !locked;
         
-            var icon = locked ? 'icons/help-lock.png' : 'icons/help.png';
+            var icon = locked ? 'images/help-lock.png' : 'images/help.png';
             $help.css('background-image', 'url(' + icon + ')');
         },
     }
