@@ -20,7 +20,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 }
 
 #wrapper p {
-    margin-top: 40px;
+    margin-top: 80px;
     text-align: center;
     color: #f5f1e7;
     font-size: 14px;
@@ -163,13 +163,18 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 .remove {
     float: right;
-    display: block;
-    height: 24px;
-    width: 24px;
+    height: 16px;
+    width: 16px;
     cursor: default;
     background: url(images/remove.png);
+    -webkit-transition: all 0.2s;
+    position: relative;
+    top: 5px;
 }
 
+.remove:hover {
+    -webkit-transform: scale(1.5);
+}
 .toDoText {
     margin-bottom: 0;
     height: 36px;
