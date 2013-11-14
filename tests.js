@@ -5,13 +5,16 @@ describe('To-Do App Tests', function() {
             $('body')
                 .append('<input id="itemEntry" value="Test item">')
                 .append('<ul id="items">');
+            
+            app.init();
         });
         
         it('should add styled items to the list', function() {
             var spyV = sinon.spy(app.update, 'visibility'),
-                spyR = sinon.spy(app.update, 'remaining');
-            
-            app.item.add( { which: 13 } );
+                spyR = sinon.spy(app.update, 'remaining'),
+                event = jQuery.Event('keydown', { 'which': 13 });
+                        
+            $('#itemEntry').trigger(event);
             
             var $todo = $('#items.todo');
             
