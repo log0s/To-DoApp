@@ -44,6 +44,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 #statusBar {
     font-size: 16px;
+    font-weight: bold;
     color: #f5f1e7;
     height: 20px;
     background-color: #bf421a;
@@ -119,6 +120,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 .todo {
     -webkit-box-sizing: border-box;
     font-size: 24px;
+    font-weight: bold;
     cursor: -webkit-grab;
     list-style-type: none;
     border: 1px dashed #e3dfd6;
@@ -155,7 +157,10 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 .toDoInput {
     display: none;
+    background-color: #f5f1e7;
     font-size: 24px;
+    font-weight: bold;
+    font-family: 'Poiret One';
     border: none;
     cursor: text;
     margin: 0;
