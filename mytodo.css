@@ -15,7 +15,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     }
 
 #wrapper {
-    margin: 0 35% 0 35%;
+    margin: 40px 35% 0 35%;
     position: relative;
 }
 
@@ -40,7 +40,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 #main {
     border-top: 26px solid #440903;
     background-color: #f5f1e7;
-    box-shadow: 5px 5px 20px #630903;
+    box-shadow: 8px 8px 20px #630903;
 }
 
 #itemEntry {
@@ -62,7 +62,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 #statusBar {
     font-size: 16px;
-    font-weight: bold;
+    font-family: 'Poiret One';
     color: #f5f1e7;
     height: 20px;
     background-color: #bf421a;
@@ -139,6 +139,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 .todo {
     -webkit-box-sizing: border-box;
+    font-family: 'Poiret One';
     font-size: 24px;
     font-weight: bold;
     cursor: -webkit-grab;
@@ -152,7 +153,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 
 .selected {
     color: #440903;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .completed {
@@ -179,8 +180,8 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     display: none;
     background-color: #f5f1e7;
     font-size: 24px;
-    font-weight: bold;
     font-family: 'Poiret One';
+    font-weight: bold;
     border: none;
     cursor: text;
     margin: 0;
