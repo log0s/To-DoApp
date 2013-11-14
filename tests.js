@@ -17,7 +17,7 @@ describe('To-Do App Tests', function() {
             console.log(JSON.stringify(event));
             $('#itemEntry').trigger(event);
             
-            var $todo = $('#items.todo');
+            var $todo = $('.todo');
             
             expect($todo.length).to.equal(1);
             expect($todo.find('toDoText').text()).to.equal('Test item');
