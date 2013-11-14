@@ -20,15 +20,11 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 }
 
 #wrapper p {
-    margin-top: 80px;
+    margin-top: 20px;
     text-align: center;
     color: #f5f1e7;
     font-size: 14px;
     font-family: Helvetica;
-}
-
-#wrapper p:last-child {
-    margin-top: 20px;
 }
 
 #wrapper a {
@@ -41,6 +37,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     border-top: 26px solid #440903;
     background-color: #f5f1e7;
     box-shadow: 8px 8px 20px #630903;
+    margin-bottom: 80px;
 }
 
 #itemEntry {
@@ -67,7 +64,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     height: 20px;
     background-color: #bf421a;
     display: none;
-    padding: 2px;
+    padding: 3px;
 }
 
 #remaining {
@@ -142,7 +139,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     font-family: 'Poiret One';
     font-size: 24px;
     font-weight: bold;
-    cursor: -webkit-grab;
+    cursor: default;
     list-style-type: none;
     border: 1px dashed #e3dfd6;
     width: 100%;
@@ -165,7 +162,6 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     float: right;
     height: 16px;
     width: 16px;
-    cursor: default;
     background: url(images/remove.png);
     -webkit-transition: all 0.2s;
     position: relative;
@@ -178,7 +174,6 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 .toDoText {
     margin-bottom: 0;
     height: 36px;
-    cursor: default;
 }
 
 .toDoInput {
