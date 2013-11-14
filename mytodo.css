@@ -81,6 +81,8 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
     width: 16px;
     margin: 5px;
     background-image: url(images/help.png);
+    color: #fff;
+    display: none; /* disabling help display for now */
 }
 
 #helpDisplay {

@@ -26,10 +26,13 @@ var app = {
             .click(app.item.filter)
             .mousedown(function(ev){ ev.preventDefault(); }); //prevent cursor from changing to text when clicking these items
         
+        /*
+        Removed help display functionality
         $help
             .hover(app.help.toggleDisplay)
             .click(app.help.toggleLock)
             .mousedown(function(ev) { ev.preventDefault(); }); //prevent cursor from changing to text when clicking this item
+        */
         
         $items
             .on('sortstart sortstop', app.update.sortState)
@@ -239,8 +242,11 @@ var app = {
                 }
             }
         }
-    },
-    
+    }
+
+    /*
+    Removed help menu functionality
+
     help: {
         toggleDisplay: function() {
             if(!locked)
@@ -254,6 +260,7 @@ var app = {
             $help.css('background-image', 'url(' + icon + ')');
         },
     }
+    */
 };
 
 $(function() {
