@@ -38,7 +38,7 @@ var app = {
             .delegate('.todo', 'mouseenter mouseleave', app.update.iconState)
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
-                        opacity: '0.5',
+                        opacity: '0.8',
                         update: app.storage.save} );
     },
     
