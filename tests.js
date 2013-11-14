@@ -13,7 +13,8 @@ describe('To-Do App Tests', function() {
             var spyV = sinon.spy(app.update, 'visibility'),
                 spyR = sinon.spy(app.update, 'remaining'),
                 event = jQuery.Event('keydown', { 'which': 13 });
-                        
+            
+            console.log(JSON.stringify(event));
             $('#itemEntry').trigger(event);
             
             var $todo = $('#items.todo');

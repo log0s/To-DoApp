@@ -89,7 +89,7 @@ var app = {
                    
         add: function(ev) {
             var entry = $itemEntry.val();
-        
+            
             if ((ev.which === 13) && (entry !== '')) {
                 var newItem = app.item.create( { text: entry } ).appendTo($items);
             
