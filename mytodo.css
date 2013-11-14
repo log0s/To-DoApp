@@ -1,6 +1,6 @@
 body {
     background-image: url('images/background.jpg');
-    font-family: 'Poiret One', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poiret One', Helvetica, Arial, sans-serif;
     cursor: default;
 }
 
@@ -17,6 +17,24 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #da421a, 0 0 3
 #wrapper {
     margin: 0 35% 0 35%;
     position: relative;
+}
+
+#wrapper p {
+    margin-top: 40px;
+    text-align: center;
+    color: #f5f1e7;
+    font-size: 14px;
+    font-family: Helvetica;
+}
+
+#wrapper p:last-child {
+    margin-top: 20px;
+}
+
+#wrapper a {
+    font-weight: bolder;
+    text-decoration: none;
+    color: #440903;
 }
 
 #main {
