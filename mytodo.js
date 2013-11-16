@@ -134,12 +134,13 @@ var app = {
         },
     
         startEdit: function(ev) {
-            var $target = $(ev.target);
+            var $target = $(ev.target),
+                label = 'toDoText';
 
             app.update.hideIcons();
 
-            if ($target.hasClass('todo'))
-                $target = $target.find('.toDoText');
+            if (!$target.hasClass(label))
+                $target = $target.hasClass('todo') ? $target.find('.' + label) : $target.siblings('.' + label);
 
             $target
                 .hide()
