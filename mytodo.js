@@ -39,6 +39,7 @@ var app = {
             .delegate('.remove', 'click', app.item.remove)
             .delegate('.toDoText', 'click', app.item.click)
             .delegate('.todo', 'mouseenter mouseleave', app.update.iconState)
+            .delegate('.todo', 'dblclick', app.item.startEdit)
             .sortable( {containment: 'parent', 
                         cursor: '-webkit-grabbing',
                         opacity: '0.8',
@@ -133,7 +134,14 @@ var app = {
         },
     
         startEdit: function(ev) {
-            $(ev.target)
+            var $target = $(ev.target);
+
+            app.update.hideIcons();
+
+            if ($target.hasClass('todo'))
+                $target = $target.find('.toDoText');
+
+            $target
                 .hide()
                 .siblings('.toDoInput')
                     .show()
@@ -254,10 +262,14 @@ var app = {
                     }
                 }
                 else {
-                    $('.remove').hide();
-                    $('.grab').addClass('invisible');
+                    app.update.hideIcons();
                 }
             }
+        },
+
+        hideIcons: function() {
+            $('.remove').hide();
+            $('.grab').addClass('invisible');
         }
     }
 
