@@ -14,11 +14,11 @@ var sorting = { state: false, target: {} },
     $selectors = $('#selector li'),
     $help = $('#help'),
     $helpDisplay = $('#helpDisplay'),
-    $toDoItem = $('<li class="todo"><label class="toDoText"></label><input class="toDoInput"></input><span class="remove" style="display: none"></span></li>');
+    $toDoItem = $('<li class="todo"><span class="grab"></span><label class="toDoText"></label><input class="toDoInput"></input><span class="remove" style="display: none"></span></li>');
 
 var app = {
     init: function() {
-        $helpDisplay.append("<ul><li><span class='helpStrong'>Click</span> on an item's text to set it as completed or not completed</li><li><span class='helpStrong'>Double click</span> on an item's text to edit it</li><li><span class='helpStrong'>Click and hold</span> on an item to drag it and reorder your list</li><li><span class='helpStrong'>Click</span> on an item's <span class='glyphicon glyphicon-remove'></span> to remove the item</li><li><span class='helpStrong'>Click</span> on the <span class='helpStrong'>All/Active/Completed</span> selectors to display different item types</li><li><span class='helpStrong'>Click</span> on the help icon to lock this dialog open</li></ul>");  //create help display from JS to keep HTML cleaner
+        //$helpDisplay.append("<ul><li><span class='helpStrong'>Click</span> on an item's text to set it as completed or not completed</li><li><span class='helpStrong'>Double click</span> on an item's text to edit it</li><li><span class='helpStrong'>Click and hold</span> on an item to drag it and reorder your list</li><li><span class='helpStrong'>Click</span> on an item's <span class='glyphicon glyphicon-remove'></span> to remove the item</li><li><span class='helpStrong'>Click</span> on the <span class='helpStrong'>All/Active/Completed</span> selectors to display different item types</li><li><span class='helpStrong'>Click</span> on the help icon to lock this dialog open</li></ul>");  //create help display from JS to keep HTML cleaner
         
         $itemEntry.keydown(app.item.add);
         
