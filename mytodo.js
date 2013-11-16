@@ -14,7 +14,7 @@ var sorting = { state: false, target: {} },
     $selectors = $('#selector li'),
     $help = $('#help'),
     $helpDisplay = $('#helpDisplay'),
-    $toDoItem = $('<li class="todo"><span class="grab"></span><label class="toDoText"></label><input class="toDoInput"></input><span class="remove" style="display: none"></span></li>');
+    $toDoItem = $('<li class="todo"><span class="grab invisible"></span><label class="toDoText"></label><input class="toDoInput"></input><span class="remove" style="display: none"></span></li>');
 
 var app = {
     init: function() {
@@ -231,14 +231,31 @@ var app = {
         },
         
         iconState: function(ev) {
-            var target = ev.target;
-        
+            var target = ev.target,
+                $target = $(target);
+
             if ((!sorting.state) || (target === sorting.target)) {
                 if(ev.type === 'mouseenter') {
-                    $(target).find('.remove').show();
+                    if($target.hasClass('toDoText')) {
+                        $target
+                            .siblings('.remove')
+                                .show()
+                            .end()
+                            .siblings('.grab')
+                                .removeClass('invisible');
+                    }
+                    else {
+                        $target
+                            .find('.remove')
+                                .show()
+                            .end()
+                            .find('.grab')
+                                .removeClass('invisible');
+                    }
                 }
                 else {
                     $('.remove').hide();
+                    $('.grab').addClass('invisible');
                 }
             }
         }

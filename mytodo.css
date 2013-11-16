@@ -89,6 +89,8 @@ h1 {
     margin-right: 2px;
 }
 
+/* Disabling help display for now
+
 #help {
     float: right;
     cursor: pointer;
@@ -97,7 +99,6 @@ h1 {
     margin: 5px;
     background-image: url(images/help.png);
     color: #fff;
-    display: none; /* disabling help display for now */
 }
 
 #helpDisplay {
@@ -123,6 +124,8 @@ h1 {
 #helpDisplay li:last-child {
     margin-bottom: 0;
 }
+
+*/
 
 #items {
     padding: 0;
@@ -200,8 +203,13 @@ h1 {
 }
 
 .grab {
+    cursor: -webkit-grab;
     background-image: url(images/grippy_large.png);
     display: inline-block;
     height: 30px;
     width: 5px;
+}
+
+.invisible {
+    visibility: hidden;
 }
